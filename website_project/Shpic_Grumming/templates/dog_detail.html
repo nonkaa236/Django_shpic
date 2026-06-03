@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ dog.name }}{% endblock %}
+
+{% block content %}
+<h2>{{ dog.name }}</h2>
+<img src="{% if dog.image %}{{ dog.image.url }}{% else %}{% static 'placeholder.svg' %}{% endif %}" alt="{{ dog.name }}">
+<p><strong>Порода:</strong> {{ dog.breed.name }}</p>
+<p><strong>Возраст:</strong> {{ dog.age }} лет</p>
+<p>{{ dog.description }}</p>
+<a href="{% url 'breed_detail' dog.breed.id %}">Вернуться к породе</a>
+{% endblock %}

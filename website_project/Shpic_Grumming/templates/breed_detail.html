@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ breed.name }}{% endblock %}
+
+{% block content %}
+<h2>{{ breed.name }}</h2>
+<img src="{% if breed.image %}{{ breed.image.url }}{% else %}{% static 'placeholder.svg' %}{% endif %}" alt="{{ breed.name }}">
+<p><strong>Происхождение:</strong> {{ breed.origin }}</p>
+<p>{{ breed.description }}</p>
+<h3>Собаки этой породы</h3>
+<div class="card-grid">
+{% for dog in dogs %}
+<div class="breed card">
+    <h4><a href="{% url 'dog_detail' dog.id %}">{{ dog.name }}</a></h4>
+    <img src="{% if dog.image %}{{ dog.image.url }}{% else %}{% static 'placeholder.svg' %}{% endif %}" alt="{{ dog.name }}">
+    <p><strong>Возраст:</strong> {{ dog.age }} лет</p>
+    <p>{{ dog.description|truncatechars:100 }}</p>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

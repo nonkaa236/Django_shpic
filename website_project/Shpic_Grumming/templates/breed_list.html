@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Список порід{% endblock %}
+
+{% block content %}
+    <h2>Породи шпіців</h2>
+    
+    <div class="card-grid">
+        {% for breed in breeds %}
+            <div class="breed">
+                <h3>{{ breed.name }}</h3>
+                
+                {% if breed.image %}
+                    <img src="{{ breed.image.url }}" alt="{{ breed.name }}">
+                {% endif %}
+                
+                <p><strong>Происхождение:</strong> {{ breed.origin }}</p>
+                
+                <!-- Виводимо скорочений опис (перші 20 слів) -->
+                <p>{{ breed.description|truncatewords:20 }}</p>
+                
+                <!-- Посилання на детальну сторінку породи згідно з вашим urls.py -->
+                <a href="{% url 'breed_detail' breed.id %}">Подробнее о породе</a>
+            </div>
+        {% empty %}
+            <p>На даний момент породи не додані.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

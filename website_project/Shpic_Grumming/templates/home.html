@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<h2>Породы шпицев</h2>
+<div class="card-grid">
+{% for breed in breeds %}
+<div class="breed card">
+    <h3><a href="{% url 'breed_detail' breed.id %}">{{ breed.name }}</a></h3>
+    <img src="{% if breed.image %}{{ breed.image.url }}{% else %}{% static 'placeholder.svg' %}{% endif %}" alt="{{ breed.name }}">
+    <p>{{ breed.description|truncatechars:120 }}</p>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Сайт о шпицах{% endblock %}</title>
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url('{% static "background.png" %}');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        .header {
+            background-color: rgba(240, 240, 240, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header h1 {
+            margin: 0 0 15px 0;
+            color: #333;
+        }
+        .header nav {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .header nav a {
+            color: #0066cc;
+            text-decoration: none;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        .header nav a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .breed {
+            border: 1px solid #ddd;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 12px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .breed h3, .breed h4 {
+            margin-top: 0;
+            color: #333;
+        }
+        .breed img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 12px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            object-fit: cover;
+        }
+        .breed a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .breed a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🐕 Добро пожаловать на сайт о шпицах!</h1>
+        <nav>
+            <a href="{% url 'home' %}">Главная</a>
+        </nav>
+    </div>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
