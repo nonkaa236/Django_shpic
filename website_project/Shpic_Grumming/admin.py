@@ -7,6 +7,7 @@ class BreedAdmin(admin.ModelAdmin):
     list_display = ('name', 'origin', 'image_tag')
     search_fields = ('name',)
     readonly_fields = ('image_tag',)
+    fields = ('name', 'description', 'origin', 'image', 'image_tag')
 
     def image_tag(self, obj):
         if obj.image:
@@ -20,6 +21,7 @@ class DogAdmin(admin.ModelAdmin):
     list_filter = ('breed',)
     search_fields = ('name',)
     readonly_fields = ('image_tag',)
+    fields = ('name', 'breed', 'age', 'description', 'image', 'image_tag', 'owner')
 
     def image_tag(self, obj):
         if obj.image:

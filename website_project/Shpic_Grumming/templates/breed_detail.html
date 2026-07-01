@@ -4,8 +4,12 @@
 {% block title %}{{ breed.name }}{% endblock %}
 
 {% block content %}
+<div class="button-group" style="margin-bottom: 20px;">
+    <a href="{% url 'breed_update' breed_id=breed.id %}" class="btn">✏️ Редактировать</a>
+    <a href="{% url 'breed_list' %}" class="btn btn-secondary">← Вернуться к списку</a>
+</div>
 <h2>{{ breed.name }}</h2>
-<img src="{% if breed.image %}{{ breed.image.url }}{% else %}{% static 'placeholder.svg' %}{% endif %}" alt="{{ breed.name }}">
+<img src="{% if breed.image %}{{ breed.image.url }}{% else %}{% static 'placeholder.svg' %}{% endif %}" alt="{{ breed.name }}" class="detail-image">
 <p><strong>Происхождение:</strong> {{ breed.origin }}</p>
 <p>{{ breed.description }}</p>
 <h3>Собаки этой породы</h3>
@@ -16,7 +20,48 @@
     <img src="{% if dog.image %}{{ dog.image.url }}{% else %}{% static 'placeholder.svg' %}{% endif %}" alt="{{ dog.name }}">
     <p><strong>Возраст:</strong> {{ dog.age }} лет</p>
     <p>{{ dog.description|truncatechars:100 }}</p>
+    <div class="breed-actions">
+        <a href="{% url 'dog_detail' dog.id %}">👁️ Просмотр</a>
+        <a href="{% url 'dog_update' dog_id=dog.id %}">✏️ Редактировать</a>
+    </div>
 </div>
+{% empty %}
+<p>Собак этой породы пока нет.</p>
 {% endfor %}
 </div>
+<p style="margin-top: 24px;"><a href="{% url 'dog_create' breed_id=breed.id %}" class="btn" style="display: inline-block;">➕ Добавить собаку этой породы</a></p>
+<p style="margin-top: 24px; color: #555; font-size: 0.95rem;">🐾 Каждая порода создана с любовью и вниманием к деталям.</p>
+
+<hr>
+<section style="margin-top: 28px; color: #333;">
+    <h3>О шпициях</h3>
+    <p>Шпицы — это группа собак с густой двойной шерстью, стоячими ушами и хвостом, закрученным на спину. Многие считают, что шпиц — это одна порода, но на самом деле существует несколько разновидностей.</p>
+
+    <h4>Основные породы и разновидности шпицев</h4>
+    <ul>
+        <li><strong>Померанский шпиц (цвергшпиц)</strong> — Рост: 18–24 см, Вес: 1,8–3,5 кг. Самый маленький и самый популярный шпиц.</li>
+        <li><strong>Малый немецкий шпиц (кляйншпиц)</strong> — Рост: 23–29 см, Вес: 5–10 кг.</li>
+        <li><strong>Средний немецкий шпиц (миттельшпиц)</strong> — Рост: 30–38 см, Вес: 7–12 кг.</li>
+        <li><strong>Большой немецкий шпиц (гроссшпиц)</strong> — Рост: 42–50 см, Вес: 17–20 кг.</li>
+        <li><strong>Вольфшпиц (кеесхонд)</strong> — Рост: 43–55 см, Вес: 25–30 кг. Самый крупный среди немецких шпицев.</li>
+    </ul>
+
+    <h4>Другие породы, относящиеся к шпицам</h4>
+    <p>Японский шпиц, Американская эскимосская собака, Финский шпиц, Самоед, Евразиер, Итальянский вольпино и другие.</p>
+
+    <h4>Самые популярные шпицы (кратко)</h4>
+    <table style="width:100%; border-collapse: collapse;">
+        <tr style="background:#f5f5f5;"><th style="text-align:left; padding:6px;">Порода</th><th style="text-align:left; padding:6px;">Рост</th><th style="text-align:left; padding:6px;">Вес</th></tr>
+        <tr><td style="padding:6px;">Померанский</td><td style="padding:6px;">18–24 см</td><td style="padding:6px;">1,8–3,5 кг</td></tr>
+        <tr><td style="padding:6px;">Малый немецкий</td><td style="padding:6px;">23–29 см</td><td style="padding:6px;">5–10 кг</td></tr>
+        <tr><td style="padding:6px;">Средний немецкий</td><td style="padding:6px;">30–38 см</td><td style="padding:6px;">7–12 кг</td></tr>
+        <tr><td style="padding:6px;">Большой немецкий</td><td style="padding:6px;">42–50 см</td><td style="padding:6px;">17–20 кг</td></tr>
+        <tr><td style="padding:6px;">Вольфшпиц (кеесхонд)</td><td style="padding:6px;">43–55 см</td><td style="padding:6px;">25–30 кг</td></tr>
+        <tr><td style="padding:6px;">Японский</td><td style="padding:6px;">30–38 см</td><td style="padding:6px;">5–10 кг</td></tr>
+        <tr><td style="padding:6px;">Американская эскимосская</td><td style="padding:6px;">23–48 см</td><td style="padding:6px;">5–16 кг</td></tr>
+        <tr><td style="padding:6px;">Финский</td><td style="padding:6px;">39–50 см</td><td style="padding:6px;">7–13 кг</td></tr>
+    </table>
+
+    <p style="margin-top:12px; color:#666;">Если говорить именно о <strong>немецком шпице</strong>, то официально существует <strong>5 разновидностей по размеру</strong>: померанский (цвергшпиц), малый (кляйншпиц), средний (миттельшпиц), большой (гроссшпиц) и вольфшпиц (кеесхонд). Все они относятся к одной группе шпицеобразных собак, но отличаются размером, весом и допустимыми окрасами.</p>
+</section>
 {% endblock %}

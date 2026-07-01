@@ -5,6 +5,9 @@
 
 {% block content %}
 <h2>Породы шпицев</h2>
+<div style="margin-bottom: 20px;">
+    <a href="{% url 'breed_list' %}" style="color: #0066cc; text-decoration: none; font-weight: bold; margin-right: 15px;">📋 Все породы</a>
+</div>
 <div class="card-grid">
 {% for breed in breeds %}
 <div class="breed card">
@@ -14,4 +17,5 @@
 </div>
 {% endfor %}
 </div>
+<p style="margin-top: 24px; color: #555; font-size: 0.95rem;">🐾 Этот сайт обновлён автоматически — приятного знакомства с породами!</p>
 {% endblock %}

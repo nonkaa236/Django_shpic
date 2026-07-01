@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Обновить собаку{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2 class="form-title">✏️ Обновить собаку: {{ dog.name }}</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="button-group">
+            <button type="submit" class="btn">💾 Сохранить изменения</button>
+            <a href="{% url 'dog_detail' dog_id=dog.id %}" class="btn btn-secondary">← Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

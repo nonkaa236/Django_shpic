@@ -4,10 +4,14 @@
 {% block title %}{{ dog.name }}{% endblock %}
 
 {% block content %}
+<div class="button-group" style="margin-bottom: 20px;">
+    <a href="{% url 'dog_update' dog_id=dog.id %}" class="btn">✏️ Редактировать</a>
+    <a href="{% url 'breed_detail' breed_id=dog.breed.id %}" class="btn btn-secondary">← Вернуться к породе</a>
+</div>
 <h2>{{ dog.name }}</h2>
-<img src="{% if dog.image %}{{ dog.image.url }}{% else %}{% static 'placeholder.svg' %}{% endif %}" alt="{{ dog.name }}">
+<img src="{% if dog.image %}{{ dog.image.url }}{% else %}{% static 'placeholder.svg' %}{% endif %}" alt="{{ dog.name }}" class="detail-image">
 <p><strong>Порода:</strong> {{ dog.breed.name }}</p>
 <p><strong>Возраст:</strong> {{ dog.age }} лет</p>
 <p>{{ dog.description }}</p>
-<a href="{% url 'breed_detail' dog.breed.id %}">Вернуться к породе</a>
+<p style="margin-top: 24px; color: #555; font-size: 0.95rem;">🐾 Немного тепла от меня — пожалуйста, любите своих питомцев!</p>
 {% endblock %}

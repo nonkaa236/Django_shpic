@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавить породу{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2 class="form-title">➕ Добавить новую породу</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="button-group">
+            <button type="submit" class="btn">💾 Сохранить</button>
+            <a href="{% url 'breed_list' %}" class="btn btn-secondary">← Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
