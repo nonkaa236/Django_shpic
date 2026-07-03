@@ -10,8 +10,11 @@
             <div class="breed">
                 <h3>{{ breed.name }}</h3>
                 
+                {% load static %}
                 {% if breed.image %}
                     <img src="{{ breed.image.url }}" alt="{{ breed.name }}">
+                {% else %}
+                    <img src="{% static 'placeholder.svg' %}" alt="Фото отсутствует" class="placeholder">
                 {% endif %}
                 
                 <p><strong>Происхождение:</strong> {{ breed.origin }}</p>
