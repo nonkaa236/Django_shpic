@@ -17,6 +17,7 @@ files = {
 </div>
 {% endfor %}
 </div>
+<p style="margin-top: 24px; color: #555; font-size: 0.95rem;">🐾 Этот сайт обновлён автоматически — приятного знакомства с породами!</p>
 {% endblock %}
 """,
     'breed_detail.html': """{% extends 'base.html' %}
@@ -40,6 +41,7 @@ files = {
 </div>
 {% endfor %}
 </div>
+<p style="margin-top: 24px; color: #555; font-size: 0.95rem;">🐾 Каждая порода создана с любовью и вниманием к деталям.</p>
 {% endblock %}
 """,
     'dog_detail.html': """{% extends 'base.html' %}
@@ -54,6 +56,7 @@ files = {
 <p><strong>Возраст:</strong> {{ dog.age }} лет</p>
 <p>{{ dog.description }}</p>
 <a href="{% url 'breed_detail' dog.breed.id %}">Вернуться к породе</a>
+<p style="margin-top: 24px; color: #555; font-size: 0.95rem;">🐾 Немного тепла от меня — пожалуйста, любите своих питомцев!</p>
 {% endblock %}
 """
 }
