@@ -30,7 +30,9 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
+    background-image: url("../background.png");
     background-size: cover;
+    background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-color: var(--bg-body);
